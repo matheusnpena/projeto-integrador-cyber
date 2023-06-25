@@ -1,0 +1,1970 @@
+{
+	"jobConfig": {
+		"name": "grupo_b_job_camada_raw_trusted",
+		"description": "",
+		"role": "arn:aws:iam::849735930525:role/LabRole",
+		"command": "glueetl",
+		"version": "3.0",
+		"runtime": null,
+		"workerType": "G.1X",
+		"numberOfWorkers": 10,
+		"maxCapacity": 10,
+		"maxRetries": 0,
+		"timeout": 2880,
+		"maxConcurrentRuns": 1,
+		"security": "none",
+		"scriptName": "grupo_b_job_camada_raw_trusted.py",
+		"scriptLocation": "s3://aws-glue-assets-849735930525-us-east-1/scripts/",
+		"language": "python-3",
+		"jobParameters": [],
+		"tags": [],
+		"jobMode": "VISUAL_MODE",
+		"createdOn": "2023-05-17T22:51:31.259Z",
+		"developerMode": false,
+		"connectionsList": [],
+		"temporaryDirectory": "s3://aws-glue-assets-849735930525-us-east-1/temporary/",
+		"logging": true,
+		"glueHiveMetastore": true,
+		"etlAutoTuning": true,
+		"metrics": true,
+		"spark": true,
+		"pythonPath": "s3://aws-glue-studio-transforms-510798373988-prod-us-east-1/gs_common.py,s3://aws-glue-studio-transforms-510798373988-prod-us-east-1/gs_now.py",
+		"bookmark": "job-bookmark-disable",
+		"sparkPath": "s3://aws-glue-assets-849735930525-us-east-1/sparkHistoryLogs/",
+		"flexExecution": true,
+		"minFlexWorkers": null
+	},
+	"dag": {
+		"node-1684370013607": {
+			"nodeId": "node-1684370013607",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [
+				"node-1684364044168"
+			],
+			"name": "Current_Timestamp",
+			"generatedNodeName": "Current_Timestamp_node1684370013607",
+			"classification": "Transform",
+			"type": "DynamicTransform",
+			"parameters": [
+				{
+					"name": "colName",
+					"value": [
+						"anomesdia"
+					],
+					"isOptional": true,
+					"type": "str",
+					"listType": null
+				},
+				{
+					"name": "dateFormat",
+					"value": [
+						"yyyy-MM-dd"
+					],
+					"isOptional": true,
+					"type": "str",
+					"listType": null
+				}
+			],
+			"functionName": "gs_now",
+			"path": "s3://aws-glue-studio-transforms-510798373988-prod-us-east-1/gs_now.py",
+			"version": "1.0.0",
+			"transformName": "gs_now",
+			"outputSchemas": [
+				[]
+			],
+			"parentsValid": true,
+			"calculatedType": "",
+			"codeGenVersion": 2
+		},
+		"node-1": {
+			"nodeId": "node-1",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [],
+			"name": "S3 bucket",
+			"generatedNodeName": "S3bucket_node1",
+			"classification": "DataSource",
+			"type": "S3",
+			"isCatalog": false,
+			"format": "csv",
+			"paths": [
+				"s3://projeto-integrador-grupo-b-raw/"
+			],
+			"compressionType": null,
+			"exclusions": [],
+			"groupFiles": null,
+			"groupSize": null,
+			"recurse": true,
+			"maxBand": null,
+			"maxFilesInBand": null,
+			"additionalOptions": {
+				"boundedSize": null,
+				"boundedFiles": null,
+				"enableSamplePath": false,
+				"samplePath": "s3://projeto-integrador-grupo-b-raw/Friday-02-03-2018_TrafficForML_CICFlowMeter.csv",
+				"boundedOption": null
+			},
+			"separator": ",",
+			"escaper": "",
+			"quoteChar": "'",
+			"multiline": true,
+			"withHeader": true,
+			"writeHeader": null,
+			"skipFirst": null,
+			"optimizePerformance": false,
+			"outputSchemas": [
+				[
+					{
+						"key": "Dst Port",
+						"fullPath": [
+							"Dst Port"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Protocol",
+						"fullPath": [
+							"Protocol"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Timestamp",
+						"fullPath": [
+							"Timestamp"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow Duration",
+						"fullPath": [
+							"Flow Duration"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Tot Fwd Pkts",
+						"fullPath": [
+							"Tot Fwd Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Tot Bwd Pkts",
+						"fullPath": [
+							"Tot Bwd Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "TotLen Fwd Pkts",
+						"fullPath": [
+							"TotLen Fwd Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "TotLen Bwd Pkts",
+						"fullPath": [
+							"TotLen Bwd Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Pkt Len Max",
+						"fullPath": [
+							"Fwd Pkt Len Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Pkt Len Min",
+						"fullPath": [
+							"Fwd Pkt Len Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Pkt Len Mean",
+						"fullPath": [
+							"Fwd Pkt Len Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Pkt Len Std",
+						"fullPath": [
+							"Fwd Pkt Len Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Pkt Len Max",
+						"fullPath": [
+							"Bwd Pkt Len Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Pkt Len Min",
+						"fullPath": [
+							"Bwd Pkt Len Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Pkt Len Mean",
+						"fullPath": [
+							"Bwd Pkt Len Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Pkt Len Std",
+						"fullPath": [
+							"Bwd Pkt Len Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow Byts/s",
+						"fullPath": [
+							"Flow Byts/s"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow Pkts/s",
+						"fullPath": [
+							"Flow Pkts/s"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow IAT Mean",
+						"fullPath": [
+							"Flow IAT Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow IAT Std",
+						"fullPath": [
+							"Flow IAT Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow IAT Max",
+						"fullPath": [
+							"Flow IAT Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow IAT Min",
+						"fullPath": [
+							"Flow IAT Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd IAT Tot",
+						"fullPath": [
+							"Fwd IAT Tot"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd IAT Mean",
+						"fullPath": [
+							"Fwd IAT Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd IAT Std",
+						"fullPath": [
+							"Fwd IAT Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd IAT Max",
+						"fullPath": [
+							"Fwd IAT Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd IAT Min",
+						"fullPath": [
+							"Fwd IAT Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd IAT Tot",
+						"fullPath": [
+							"Bwd IAT Tot"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd IAT Mean",
+						"fullPath": [
+							"Bwd IAT Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd IAT Std",
+						"fullPath": [
+							"Bwd IAT Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd IAT Max",
+						"fullPath": [
+							"Bwd IAT Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd IAT Min",
+						"fullPath": [
+							"Bwd IAT Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd PSH Flags",
+						"fullPath": [
+							"Fwd PSH Flags"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd PSH Flags",
+						"fullPath": [
+							"Bwd PSH Flags"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd URG Flags",
+						"fullPath": [
+							"Fwd URG Flags"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd URG Flags",
+						"fullPath": [
+							"Bwd URG Flags"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Header Len",
+						"fullPath": [
+							"Fwd Header Len"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Header Len",
+						"fullPath": [
+							"Bwd Header Len"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Pkts/s",
+						"fullPath": [
+							"Fwd Pkts/s"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Pkts/s",
+						"fullPath": [
+							"Bwd Pkts/s"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt Len Min",
+						"fullPath": [
+							"Pkt Len Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt Len Max",
+						"fullPath": [
+							"Pkt Len Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt Len Mean",
+						"fullPath": [
+							"Pkt Len Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt Len Std",
+						"fullPath": [
+							"Pkt Len Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt Len Var",
+						"fullPath": [
+							"Pkt Len Var"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "FIN Flag Cnt",
+						"fullPath": [
+							"FIN Flag Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "SYN Flag Cnt",
+						"fullPath": [
+							"SYN Flag Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "RST Flag Cnt",
+						"fullPath": [
+							"RST Flag Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "PSH Flag Cnt",
+						"fullPath": [
+							"PSH Flag Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "ACK Flag Cnt",
+						"fullPath": [
+							"ACK Flag Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "URG Flag Cnt",
+						"fullPath": [
+							"URG Flag Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "CWE Flag Count",
+						"fullPath": [
+							"CWE Flag Count"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "ECE Flag Cnt",
+						"fullPath": [
+							"ECE Flag Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Down/Up Ratio",
+						"fullPath": [
+							"Down/Up Ratio"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt Size Avg",
+						"fullPath": [
+							"Pkt Size Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Seg Size Avg",
+						"fullPath": [
+							"Fwd Seg Size Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Seg Size Avg",
+						"fullPath": [
+							"Bwd Seg Size Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Byts/b Avg",
+						"fullPath": [
+							"Fwd Byts/b Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Pkts/b Avg",
+						"fullPath": [
+							"Fwd Pkts/b Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Blk Rate Avg",
+						"fullPath": [
+							"Fwd Blk Rate Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Byts/b Avg",
+						"fullPath": [
+							"Bwd Byts/b Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Pkts/b Avg",
+						"fullPath": [
+							"Bwd Pkts/b Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Blk Rate Avg",
+						"fullPath": [
+							"Bwd Blk Rate Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Subflow Fwd Pkts",
+						"fullPath": [
+							"Subflow Fwd Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Subflow Fwd Byts",
+						"fullPath": [
+							"Subflow Fwd Byts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Subflow Bwd Pkts",
+						"fullPath": [
+							"Subflow Bwd Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Subflow Bwd Byts",
+						"fullPath": [
+							"Subflow Bwd Byts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Init Fwd Win Byts",
+						"fullPath": [
+							"Init Fwd Win Byts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Init Bwd Win Byts",
+						"fullPath": [
+							"Init Bwd Win Byts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Act Data Pkts",
+						"fullPath": [
+							"Fwd Act Data Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Seg Size Min",
+						"fullPath": [
+							"Fwd Seg Size Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Active Mean",
+						"fullPath": [
+							"Active Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Active Std",
+						"fullPath": [
+							"Active Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Active Max",
+						"fullPath": [
+							"Active Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Active Min",
+						"fullPath": [
+							"Active Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Idle Mean",
+						"fullPath": [
+							"Idle Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Idle Std",
+						"fullPath": [
+							"Idle Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Idle Max",
+						"fullPath": [
+							"Idle Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Idle Min",
+						"fullPath": [
+							"Idle Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Label",
+						"fullPath": [
+							"Label"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					}
+				]
+			],
+			"calculatedType": "",
+			"codeGenVersion": 2
+		},
+		"node-3": {
+			"nodeId": "node-3",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [
+				"node-1684370013607"
+			],
+			"name": "S3 bucket",
+			"generatedNodeName": "S3bucket_node3",
+			"classification": "DataSink",
+			"type": "S3",
+			"streamingBatchInterval": 100,
+			"format": "glueparquet",
+			"compression": "gzip",
+			"path": "s3://projeto-integrador-grupo-b-trusted",
+			"partitionKeys": [],
+			"schemaChangePolicy": {
+				"enableUpdateCatalog": true,
+				"updateBehavior": "UPDATE_IN_DATABASE",
+				"database": "grupo-b-database-camada-trusted",
+				"table": "grupo-b-table-camada-trusted"
+			},
+			"updateCatalogOptions": "schemaAndPartitions",
+			"calculatedType": "",
+			"codeGenVersion": 2
+		},
+		"node-1684364044168": {
+			"nodeId": "node-1684364044168",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [
+				"node-1684364727318"
+			],
+			"name": "Filter",
+			"generatedNodeName": "Filter_node1684364044168",
+			"classification": "Transform",
+			"type": "Filter",
+			"logicalOperator": "OR",
+			"filters": [
+				{
+					"operation": "REGEX",
+					"negated": false,
+					"values": [
+						{
+							"type": "CONSTANT",
+							"value": [
+								"FTP-BruteForce"
+							]
+						},
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "Label"
+						}
+					]
+				},
+				{
+					"operation": "REGEX",
+					"negated": false,
+					"values": [
+						{
+							"type": "CONSTANT",
+							"value": [
+								"SSH-Bruteforce"
+							]
+						},
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "Label"
+						}
+					]
+				},
+				{
+					"operation": "REGEX",
+					"negated": false,
+					"values": [
+						{
+							"type": "CONSTANT",
+							"value": [
+								"DoS-GoldenEye"
+							]
+						},
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "Label"
+						}
+					]
+				},
+				{
+					"operation": "REGEX",
+					"negated": false,
+					"values": [
+						{
+							"type": "CONSTANT",
+							"value": [
+								"DoS-Slowloris"
+							]
+						},
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "Label"
+						}
+					]
+				},
+				{
+					"operation": "REGEX",
+					"negated": false,
+					"values": [
+						{
+							"type": "CONSTANT",
+							"value": [
+								"DoS-SlowHTTPTest"
+							]
+						},
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "Label"
+						}
+					]
+				},
+				{
+					"operation": "REGEX",
+					"negated": false,
+					"values": [
+						{
+							"type": "CONSTANT",
+							"value": [
+								"DoS-Hulk"
+							]
+						},
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "Label"
+						}
+					]
+				},
+				{
+					"operation": "REGEX",
+					"negated": false,
+					"values": [
+						{
+							"type": "CONSTANT",
+							"value": [
+								"DDoS attacks-LOIC-HTTP"
+							]
+						},
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "Label"
+						}
+					]
+				},
+				{
+					"operation": "REGEX",
+					"negated": false,
+					"values": [
+						{
+							"type": "CONSTANT",
+							"value": [
+								"DDoS-LOIC-UDP"
+							]
+						},
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "Label"
+						}
+					]
+				},
+				{
+					"operation": "REGEX",
+					"negated": false,
+					"values": [
+						{
+							"type": "CONSTANT",
+							"value": [
+								"DDOS-HOIC"
+							]
+						},
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "Label"
+						}
+					]
+				},
+				{
+					"operation": "REGEX",
+					"negated": false,
+					"values": [
+						{
+							"type": "CONSTANT",
+							"value": [
+								"Brute Force-Web"
+							]
+						},
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "Label"
+						}
+					]
+				},
+				{
+					"operation": "REGEX",
+					"negated": false,
+					"values": [
+						{
+							"type": "CONSTANT",
+							"value": [
+								"Brute Force-XSS"
+							]
+						},
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "Label"
+						}
+					]
+				},
+				{
+					"operation": "REGEX",
+					"negated": false,
+					"values": [
+						{
+							"type": "CONSTANT",
+							"value": [
+								"SQL Injection"
+							]
+						},
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "Label"
+						}
+					]
+				},
+				{
+					"operation": "REGEX",
+					"negated": false,
+					"values": [
+						{
+							"type": "CONSTANT",
+							"value": [
+								"Infiltration"
+							]
+						},
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "Label"
+						}
+					]
+				},
+				{
+					"operation": "REGEX",
+					"negated": false,
+					"values": [
+						{
+							"type": "CONSTANT",
+							"value": [
+								"Bot"
+							]
+						},
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "Label"
+						}
+					]
+				},
+				{
+					"operation": "REGEX",
+					"negated": false,
+					"values": [
+						{
+							"type": "CONSTANT",
+							"value": [
+								"Benign"
+							]
+						},
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "Label"
+						}
+					]
+				}
+			],
+			"parentsValid": true,
+			"calculatedType": "",
+			"codeGenVersion": 2
+		},
+		"node-1684364727318": {
+			"nodeId": "node-1684364727318",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [
+				"node-1684891553970"
+			],
+			"name": "Evaluate Data Quality",
+			"generatedNodeName": "EvaluateDataQuality_node1684364727318",
+			"classification": "Transform",
+			"type": "EvaluateDataQuality",
+			"ruleset": "# You may insert rules from the DQDL rule builder to the left.\n# Choose \"+\" to insert rule types and column schema into the code editor.\n# Rules are inserted at cursor position.\n# e.g. Completeness \"colA\" between 0.4 and 0.8 */\nRules = [\n    IsComplete \"label\"\n]",
+			"output": "PrimaryInput",
+			"publishingOptions": {
+				"evaluationContext": null,
+				"cloudWatchMetricsEnabled": true,
+				"resultsS3Prefix": "",
+				"resultsPublishingEnabled": true
+			},
+			"stopJobOnFailureOptions": null,
+			"parentsValid": true,
+			"calculatedType": "",
+			"codeGenVersion": 2
+		},
+		"node-1684891553970": {
+			"nodeId": "node-1684891553970",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [
+				"node-1"
+			],
+			"name": "Change Schema",
+			"generatedNodeName": "ChangeSchema_node1684891553970",
+			"classification": "Transform",
+			"type": "ApplyMapping",
+			"mapping": [
+				{
+					"toKey": "Dst_Port",
+					"fromPath": [
+						"Dst Port"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Protocol",
+					"fromPath": [
+						"Protocol"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Timestamp",
+					"fromPath": [
+						"Timestamp"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Flow_Duration",
+					"fromPath": [
+						"Flow Duration"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Tot_Fwd_Pkts",
+					"fromPath": [
+						"Tot Fwd Pkts"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Tot_Bwd_Pkts",
+					"fromPath": [
+						"Tot Bwd Pkts"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "TotLen_Fwd_Pkts",
+					"fromPath": [
+						"TotLen Fwd Pkts"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "TotLen_Bwd_Pkts",
+					"fromPath": [
+						"TotLen Bwd Pkts"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_Pkt_Len_Max",
+					"fromPath": [
+						"Fwd Pkt Len Max"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_Pkt_Len_Min",
+					"fromPath": [
+						"Fwd Pkt Len Min"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_Pkt_Len_Mean",
+					"fromPath": [
+						"Fwd Pkt Len Mean"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_Pkt_Len_Std",
+					"fromPath": [
+						"Fwd Pkt Len Std"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_Pkt_Len_Max",
+					"fromPath": [
+						"Bwd Pkt Len Max"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_Pkt_Len_Min",
+					"fromPath": [
+						"Bwd Pkt Len Min"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_Pkt_Len_Mean",
+					"fromPath": [
+						"Bwd Pkt Len Mean"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_Pkt_Len_Std",
+					"fromPath": [
+						"Bwd Pkt Len Std"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Flow_Bytss",
+					"fromPath": [
+						"Flow Byts/s"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Flow_Pktss",
+					"fromPath": [
+						"Flow Pkts/s"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Flow_IAT_Mean",
+					"fromPath": [
+						"Flow IAT Mean"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Flow_IAT_Std",
+					"fromPath": [
+						"Flow IAT Std"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Flow_IAT_Max",
+					"fromPath": [
+						"Flow IAT Max"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Flow_IAT_Min",
+					"fromPath": [
+						"Flow IAT Min"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_IAT_Tot",
+					"fromPath": [
+						"Fwd IAT Tot"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_IAT_Mean",
+					"fromPath": [
+						"Fwd IAT Mean"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_IAT_Std",
+					"fromPath": [
+						"Fwd IAT Std"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_IAT_Max",
+					"fromPath": [
+						"Fwd IAT Max"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_IAT_Min",
+					"fromPath": [
+						"Fwd IAT Min"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_IAT_Tot",
+					"fromPath": [
+						"Bwd IAT Tot"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_IAT_Mean",
+					"fromPath": [
+						"Bwd IAT Mean"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_IAT_Std",
+					"fromPath": [
+						"Bwd IAT Std"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_IAT_Max",
+					"fromPath": [
+						"Bwd IAT Max"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_IAT_Min",
+					"fromPath": [
+						"Bwd IAT Min"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_PSH_Flags",
+					"fromPath": [
+						"Fwd PSH Flags"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_PSH_Flags",
+					"fromPath": [
+						"Bwd PSH Flags"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_URG_Flags",
+					"fromPath": [
+						"Fwd URG Flags"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_URG_Flags",
+					"fromPath": [
+						"Bwd URG Flags"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_Header_Len",
+					"fromPath": [
+						"Fwd Header Len"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_Header_Len",
+					"fromPath": [
+						"Bwd Header Len"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_Pktss",
+					"fromPath": [
+						"Fwd Pkts/s"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_Pktss",
+					"fromPath": [
+						"Bwd Pkts/s"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Pkt_Len_Min",
+					"fromPath": [
+						"Pkt Len Min"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Pkt_Len_Max",
+					"fromPath": [
+						"Pkt Len Max"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Pkt_Len_Mean",
+					"fromPath": [
+						"Pkt Len Mean"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Pkt_Len_Std",
+					"fromPath": [
+						"Pkt Len Std"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Pkt_Len_Var",
+					"fromPath": [
+						"Pkt Len Var"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "FIN_Flag_Cnt",
+					"fromPath": [
+						"FIN Flag Cnt"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "SYN_Flag_Cnt",
+					"fromPath": [
+						"SYN Flag Cnt"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "RST_Flag_Cnt",
+					"fromPath": [
+						"RST Flag Cnt"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "PSH_Flag_Cnt",
+					"fromPath": [
+						"PSH Flag Cnt"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "ACK_Flag_Cnt",
+					"fromPath": [
+						"ACK Flag Cnt"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "URG_Flag_Cnt",
+					"fromPath": [
+						"URG Flag Cnt"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "CWE_Flag_Count",
+					"fromPath": [
+						"CWE Flag Count"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "ECE_Flag_Cnt",
+					"fromPath": [
+						"ECE Flag Cnt"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "DownUp_Ratio",
+					"fromPath": [
+						"Down/Up Ratio"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Pkt_Size_Avg",
+					"fromPath": [
+						"Pkt Size Avg"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_Seg_Size_Avg",
+					"fromPath": [
+						"Fwd Seg Size Avg"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_Seg_Size_Avg",
+					"fromPath": [
+						"Bwd Seg Size Avg"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_Bytsb_Avg",
+					"fromPath": [
+						"Fwd Byts/b Avg"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_Pktsb_Avg",
+					"fromPath": [
+						"Fwd Pkts/b Avg"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_Blk_Rate_Avg",
+					"fromPath": [
+						"Fwd Blk Rate Avg"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_Bytsb_Avg",
+					"fromPath": [
+						"Bwd Byts/b Avg"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_Pktsb_Avg",
+					"fromPath": [
+						"Bwd Pkts/b Avg"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Bwd_Blk_Rate_Avg",
+					"fromPath": [
+						"Bwd Blk Rate Avg"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Subflow_Fwd_Pkts",
+					"fromPath": [
+						"Subflow Fwd Pkts"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Subflow_Fwd_Byts",
+					"fromPath": [
+						"Subflow Fwd Byts"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Subflow_Bwd_Pkts",
+					"fromPath": [
+						"Subflow Bwd Pkts"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Subflow_Bwd_Byts",
+					"fromPath": [
+						"Subflow Bwd Byts"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Init_Fwd_Win_Byts",
+					"fromPath": [
+						"Init Fwd Win Byts"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Init_Bwd_Win_Byts",
+					"fromPath": [
+						"Init Bwd Win Byts"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_Act_Data_Pkts",
+					"fromPath": [
+						"Fwd Act Data Pkts"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Fwd_Seg_Size_Min",
+					"fromPath": [
+						"Fwd Seg Size Min"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Active_Mean",
+					"fromPath": [
+						"Active Mean"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Active_Std",
+					"fromPath": [
+						"Active Std"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Active_Max",
+					"fromPath": [
+						"Active Max"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Active_Min",
+					"fromPath": [
+						"Active Min"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Idle_Mean",
+					"fromPath": [
+						"Idle Mean"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Idle_Std",
+					"fromPath": [
+						"Idle Std"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Idle_Max",
+					"fromPath": [
+						"Idle Max"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Idle_Min",
+					"fromPath": [
+						"Idle Min"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "Label",
+					"fromPath": [
+						"Label"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				}
+			],
+			"parentsValid": true,
+			"calculatedType": "",
+			"codeGenVersion": 2
+		}
+	},
+	"hasBeenSaved": false
+}

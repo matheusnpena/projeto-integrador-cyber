@@ -1,0 +1,977 @@
+{
+	"jobConfig": {
+		"name": "grupo_b_job_amostra_treinamento",
+		"description": "",
+		"role": "arn:aws:iam::849735930525:role/LabRole",
+		"command": "glueetl",
+		"version": "3.0",
+		"runtime": null,
+		"workerType": "G.1X",
+		"numberOfWorkers": 10,
+		"maxCapacity": 10,
+		"maxRetries": 0,
+		"timeout": 2880,
+		"maxConcurrentRuns": 1,
+		"security": "none",
+		"scriptName": "grupo_b_job_amostra_treinamento.py",
+		"scriptLocation": "s3://aws-glue-assets-849735930525-us-east-1/scripts/",
+		"language": "python-3",
+		"jobParameters": [],
+		"tags": [],
+		"jobMode": "VISUAL_MODE",
+		"createdOn": "2023-06-14T00:23:11.604Z",
+		"developerMode": false,
+		"connectionsList": [],
+		"temporaryDirectory": "s3://aws-glue-assets-849735930525-us-east-1/temporary/",
+		"logging": true,
+		"glueHiveMetastore": true,
+		"etlAutoTuning": true,
+		"metrics": true,
+		"spark": true,
+		"bookmark": "job-bookmark-disable",
+		"sparkPath": "s3://aws-glue-assets-849735930525-us-east-1/sparkHistoryLogs/",
+		"flexExecution": false,
+		"minFlexWorkers": null,
+		"sourceControlDetails": {
+			"Provider": "AWS_CODE_COMMIT",
+			"Folder": "grupo_b_job_amostra_treinamento"
+		}
+	},
+	"dag": {
+		"node-1686701374749": {
+			"nodeId": "node-1686701374749",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [
+				"node-1"
+			],
+			"name": "Filter",
+			"generatedNodeName": "Filter_node1686701374749",
+			"classification": "Transform",
+			"type": "Filter",
+			"logicalOperator": "AND",
+			"filters": [
+				{
+					"operation": "EQ",
+					"negated": false,
+					"values": [
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "IsBenign"
+						},
+						{
+							"type": "CONSTANT",
+							"value": [
+								"1"
+							]
+						}
+					]
+				}
+			],
+			"parentsValid": true,
+			"calculatedType": "",
+			"codeGenVersion": 2
+		},
+		"node-1686701354521": {
+			"nodeId": "node-1686701354521",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [
+				"node-1"
+			],
+			"name": "Filter",
+			"generatedNodeName": "Filter_node1686701354521",
+			"classification": "Transform",
+			"type": "Filter",
+			"logicalOperator": "AND",
+			"filters": [
+				{
+					"operation": "EQ",
+					"negated": false,
+					"values": [
+						{
+							"type": "COLUMNEXTRACTED",
+							"value": "IsBenign"
+						},
+						{
+							"type": "CONSTANT",
+							"value": [
+								"0"
+							]
+						}
+					]
+				}
+			],
+			"parentsValid": true,
+			"calculatedType": "",
+			"codeGenVersion": 2
+		},
+		"node-1": {
+			"nodeId": "node-1",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [],
+			"name": "S3 bucket",
+			"generatedNodeName": "S3bucket_node1",
+			"classification": "DataSource",
+			"type": "S3",
+			"isCatalog": false,
+			"format": "parquet",
+			"paths": [
+				"s3://projeto-integrador-grupo-b-refined"
+			],
+			"compressionType": null,
+			"exclusions": [],
+			"groupFiles": null,
+			"groupSize": null,
+			"recurse": true,
+			"maxBand": null,
+			"maxFilesInBand": null,
+			"additionalOptions": {
+				"boundedSize": null,
+				"boundedFiles": null,
+				"enableSamplePath": false,
+				"samplePath": "s3://projeto-integrador-grupo-b-refined/amostra-treinamento/run-1687220790280-part-block-0-r-00000-snappy.parquet",
+				"boundedOption": null
+			},
+			"outputSchemas": [
+				[
+					{
+						"key": "Fwd_IAT_Max",
+						"fullPath": [
+							"Fwd_IAT_Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_Act_Data_Pkts",
+						"fullPath": [
+							"Fwd_Act_Data_Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_Header_Len",
+						"fullPath": [
+							"Fwd_Header_Len"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_Pktsb_Avg",
+						"fullPath": [
+							"Bwd_Pktsb_Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_IAT_Mean",
+						"fullPath": [
+							"Bwd_IAT_Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Idle_Std",
+						"fullPath": [
+							"Idle_Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_IAT_Tot",
+						"fullPath": [
+							"Bwd_IAT_Tot"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_Pktss",
+						"fullPath": [
+							"Fwd_Pktss"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Active_Min",
+						"fullPath": [
+							"Active_Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Timestamp",
+						"fullPath": [
+							"Timestamp"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Subflow_Bwd_Byts",
+						"fullPath": [
+							"Subflow_Bwd_Byts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_Pkt_Len_Max",
+						"fullPath": [
+							"Fwd_Pkt_Len_Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_IAT_Max",
+						"fullPath": [
+							"Bwd_IAT_Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow_IAT_Min",
+						"fullPath": [
+							"Flow_IAT_Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Subflow_Fwd_Byts",
+						"fullPath": [
+							"Subflow_Fwd_Byts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Dst_Port",
+						"fullPath": [
+							"Dst_Port"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_Bytsb_Avg",
+						"fullPath": [
+							"Fwd_Bytsb_Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_Pkt_Len_Mean",
+						"fullPath": [
+							"Fwd_Pkt_Len_Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt_Len_Std",
+						"fullPath": [
+							"Pkt_Len_Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "CWE_Flag_Count",
+						"fullPath": [
+							"CWE_Flag_Count"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_Pkt_Len_Std",
+						"fullPath": [
+							"Bwd_Pkt_Len_Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow_Duration",
+						"fullPath": [
+							"Flow_Duration"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "ECE_Flag_Cnt",
+						"fullPath": [
+							"ECE_Flag_Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt_Len_Mean",
+						"fullPath": [
+							"Pkt_Len_Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Protocol",
+						"fullPath": [
+							"Protocol"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Idle_Max",
+						"fullPath": [
+							"Idle_Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_Pkt_Len_Mean",
+						"fullPath": [
+							"Bwd_Pkt_Len_Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_IAT_Min",
+						"fullPath": [
+							"Fwd_IAT_Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_PSH_Flags",
+						"fullPath": [
+							"Fwd_PSH_Flags"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Label",
+						"fullPath": [
+							"Label"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Init_Fwd_Win_Byts",
+						"fullPath": [
+							"Init_Fwd_Win_Byts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "TotLen_Bwd_Pkts",
+						"fullPath": [
+							"TotLen_Bwd_Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt_Len_Max",
+						"fullPath": [
+							"Pkt_Len_Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_Blk_Rate_Avg",
+						"fullPath": [
+							"Fwd_Blk_Rate_Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Active_Std",
+						"fullPath": [
+							"Active_Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Tot_Bwd_Pkts",
+						"fullPath": [
+							"Tot_Bwd_Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "PSH_Flag_Cnt",
+						"fullPath": [
+							"PSH_Flag_Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "TotLen_Fwd_Pkts",
+						"fullPath": [
+							"TotLen_Fwd_Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Active_Mean",
+						"fullPath": [
+							"Active_Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt_Len_Var",
+						"fullPath": [
+							"Pkt_Len_Var"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow_IAT_Std",
+						"fullPath": [
+							"Flow_IAT_Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_Pktsb_Avg",
+						"fullPath": [
+							"Fwd_Pktsb_Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "URG_Flag_Cnt",
+						"fullPath": [
+							"URG_Flag_Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_Pkt_Len_Max",
+						"fullPath": [
+							"Bwd_Pkt_Len_Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Tot_Fwd_Pkts",
+						"fullPath": [
+							"Tot_Fwd_Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "SYN_Flag_Cnt",
+						"fullPath": [
+							"SYN_Flag_Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_IAT_Mean",
+						"fullPath": [
+							"Fwd_IAT_Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_Pktss",
+						"fullPath": [
+							"Bwd_Pktss"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_Seg_Size_Avg",
+						"fullPath": [
+							"Fwd_Seg_Size_Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_URG_Flags",
+						"fullPath": [
+							"Bwd_URG_Flags"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_Pkt_Len_Min",
+						"fullPath": [
+							"Fwd_Pkt_Len_Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "FIN_Flag_Cnt",
+						"fullPath": [
+							"FIN_Flag_Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_IAT_Std",
+						"fullPath": [
+							"Fwd_IAT_Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_Blk_Rate_Avg",
+						"fullPath": [
+							"Bwd_Blk_Rate_Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_IAT_Min",
+						"fullPath": [
+							"Bwd_IAT_Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow_Pktss",
+						"fullPath": [
+							"Flow_Pktss"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "DownUp_Ratio",
+						"fullPath": [
+							"DownUp_Ratio"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_Pkt_Len_Std",
+						"fullPath": [
+							"Fwd_Pkt_Len_Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_Seg_Size_Avg",
+						"fullPath": [
+							"Bwd_Seg_Size_Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Idle_Min",
+						"fullPath": [
+							"Idle_Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Idle_Mean",
+						"fullPath": [
+							"Idle_Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_PSH_Flags",
+						"fullPath": [
+							"Bwd_PSH_Flags"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Active_Max",
+						"fullPath": [
+							"Active_Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_IAT_Tot",
+						"fullPath": [
+							"Fwd_IAT_Tot"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow_IAT_Mean",
+						"fullPath": [
+							"Flow_IAT_Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "RST_Flag_Cnt",
+						"fullPath": [
+							"RST_Flag_Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_Bytsb_Avg",
+						"fullPath": [
+							"Bwd_Bytsb_Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Subflow_Bwd_Pkts",
+						"fullPath": [
+							"Subflow_Bwd_Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow_IAT_Max",
+						"fullPath": [
+							"Flow_IAT_Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow_Bytss",
+						"fullPath": [
+							"Flow_Bytss"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Subflow_Fwd_Pkts",
+						"fullPath": [
+							"Subflow_Fwd_Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt_Len_Min",
+						"fullPath": [
+							"Pkt_Len_Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "ACK_Flag_Cnt",
+						"fullPath": [
+							"ACK_Flag_Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Init_Bwd_Win_Byts",
+						"fullPath": [
+							"Init_Bwd_Win_Byts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_Header_Len",
+						"fullPath": [
+							"Bwd_Header_Len"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_IAT_Std",
+						"fullPath": [
+							"Bwd_IAT_Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_Seg_Size_Min",
+						"fullPath": [
+							"Fwd_Seg_Size_Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt_Size_Avg",
+						"fullPath": [
+							"Pkt_Size_Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd_URG_Flags",
+						"fullPath": [
+							"Fwd_URG_Flags"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd_Pkt_Len_Min",
+						"fullPath": [
+							"Bwd_Pkt_Len_Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "anomesdia",
+						"fullPath": [
+							"anomesdia"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "IsBenign",
+						"fullPath": [
+							"IsBenign"
+						],
+						"type": "int",
+						"glueStudioType": null,
+						"children": null
+					}
+				]
+			],
+			"calculatedType": "",
+			"codeGenVersion": 2,
+			"inferSchemaChanged": true
+		},
+		"node-1686701757410": {
+			"nodeId": "node-1686701757410",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [
+				"node-1686702271218",
+				"node-1686702306159"
+			],
+			"name": "Union",
+			"generatedNodeName": "Union_node1686701757410",
+			"classification": "Transform",
+			"type": "Union",
+			"parentsValid": true,
+			"calculatedType": "",
+			"sources": [
+				"node-1686702271218",
+				"node-1686702306159"
+			],
+			"unionType": "ALL",
+			"codeGenVersion": 2
+		},
+		"node-1686701976028": {
+			"nodeId": "node-1686701976028",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [
+				"node-1686701757410"
+			],
+			"name": "Amazon S3",
+			"generatedNodeName": "AmazonS3_node1686701976028",
+			"classification": "DataSink",
+			"type": "S3",
+			"streamingBatchInterval": 100,
+			"format": "glueparquet",
+			"compression": "gzip",
+			"path": "s3://projeto-integrador-grupo-b-refined/amostra-treinamento/",
+			"partitionKeys": [],
+			"schemaChangePolicy": {
+				"enableUpdateCatalog": true,
+				"updateBehavior": "UPDATE_IN_DATABASE",
+				"database": "grupo-b-database-camada-refined",
+				"table": "grupo-b-amostra-treinamento"
+			},
+			"updateCatalogOptions": "schemaAndPartitions",
+			"calculatedType": ""
+		},
+		"node-1686702271218": {
+			"nodeId": "node-1686702271218",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [
+				"node-1686701354521"
+			],
+			"name": "SQL Query",
+			"generatedNodeName": "SQLQuery_node1686702271218",
+			"classification": "Transform",
+			"type": "SqlCode",
+			"sqlAliases": [
+				{
+					"from": "node-1686701354521",
+					"alias": "myDataSource"
+				}
+			],
+			"outputSchemas": null,
+			"parentsValid": true,
+			"calculatedType": "",
+			"sqlQuery": "SELECT * FROM myDataSource ORDER BY RANDOM() LIMIT 10000",
+			"codeGenVersion": 2
+		},
+		"node-1686702306159": {
+			"nodeId": "node-1686702306159",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [
+				"node-1686701374749"
+			],
+			"name": "SQL Query",
+			"generatedNodeName": "SQLQuery_node1686702306159",
+			"classification": "Transform",
+			"type": "SqlCode",
+			"sqlAliases": [
+				{
+					"from": "node-1686701374749",
+					"alias": "myDataSource"
+				}
+			],
+			"outputSchemas": null,
+			"parentsValid": true,
+			"calculatedType": "",
+			"sqlQuery": "SELECT * FROM myDataSource ORDER BY RANDOM() LIMIT 10000",
+			"codeGenVersion": 2
+		}
+	},
+	"hasBeenSaved": false
+}

@@ -1,0 +1,827 @@
+{
+	"jobConfig": {
+		"name": "grupo_b_job_camada_origem_raw",
+		"description": "",
+		"role": "arn:aws:iam::849735930525:role/LabRole",
+		"command": "glueetl",
+		"version": "3.0",
+		"runtime": null,
+		"workerType": "G.1X",
+		"numberOfWorkers": 10,
+		"maxCapacity": 10,
+		"maxRetries": 0,
+		"timeout": 2880,
+		"maxConcurrentRuns": 1,
+		"security": "none",
+		"scriptName": "grupo_b_job_camada_origem_raw.py",
+		"scriptLocation": "s3://aws-glue-assets-849735930525-us-east-1/scripts/",
+		"language": "python-3",
+		"jobParameters": [],
+		"tags": [],
+		"jobMode": "VISUAL_MODE",
+		"createdOn": "2023-06-25T19:45:48.222Z",
+		"developerMode": false,
+		"connectionsList": [],
+		"temporaryDirectory": "s3://aws-glue-assets-849735930525-us-east-1/temporary/",
+		"logging": true,
+		"glueHiveMetastore": true,
+		"etlAutoTuning": true,
+		"metrics": true,
+		"spark": true,
+		"bookmark": "job-bookmark-disable",
+		"sparkPath": "s3://aws-glue-assets-849735930525-us-east-1/sparkHistoryLogs/",
+		"flexExecution": false,
+		"minFlexWorkers": null
+	},
+	"dag": {
+		"node-1": {
+			"nodeId": "node-1",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [],
+			"name": "S3 bucket",
+			"generatedNodeName": "S3bucket_node1",
+			"classification": "DataSource",
+			"type": "S3",
+			"isCatalog": false,
+			"format": "csv",
+			"paths": [
+				"s3://projeto-integrador-grupo-b-origem"
+			],
+			"compressionType": null,
+			"exclusions": [],
+			"groupFiles": null,
+			"groupSize": null,
+			"recurse": true,
+			"maxBand": null,
+			"maxFilesInBand": null,
+			"additionalOptions": {
+				"boundedSize": null,
+				"boundedFiles": null,
+				"enableSamplePath": false,
+				"samplePath": "s3://projeto-integrador-grupo-b-origem/Friday-02-03-2018_TrafficForML_CICFlowMeter.csv",
+				"boundedOption": null
+			},
+			"separator": ",",
+			"escaper": "",
+			"quoteChar": "\"",
+			"multiline": null,
+			"withHeader": true,
+			"writeHeader": null,
+			"skipFirst": null,
+			"optimizePerformance": false,
+			"outputSchemas": [
+				[
+					{
+						"key": "Dst Port",
+						"fullPath": [
+							"Dst Port"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Protocol",
+						"fullPath": [
+							"Protocol"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Timestamp",
+						"fullPath": [
+							"Timestamp"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow Duration",
+						"fullPath": [
+							"Flow Duration"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Tot Fwd Pkts",
+						"fullPath": [
+							"Tot Fwd Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Tot Bwd Pkts",
+						"fullPath": [
+							"Tot Bwd Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "TotLen Fwd Pkts",
+						"fullPath": [
+							"TotLen Fwd Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "TotLen Bwd Pkts",
+						"fullPath": [
+							"TotLen Bwd Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Pkt Len Max",
+						"fullPath": [
+							"Fwd Pkt Len Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Pkt Len Min",
+						"fullPath": [
+							"Fwd Pkt Len Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Pkt Len Mean",
+						"fullPath": [
+							"Fwd Pkt Len Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Pkt Len Std",
+						"fullPath": [
+							"Fwd Pkt Len Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Pkt Len Max",
+						"fullPath": [
+							"Bwd Pkt Len Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Pkt Len Min",
+						"fullPath": [
+							"Bwd Pkt Len Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Pkt Len Mean",
+						"fullPath": [
+							"Bwd Pkt Len Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Pkt Len Std",
+						"fullPath": [
+							"Bwd Pkt Len Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow Byts/s",
+						"fullPath": [
+							"Flow Byts/s"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow Pkts/s",
+						"fullPath": [
+							"Flow Pkts/s"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow IAT Mean",
+						"fullPath": [
+							"Flow IAT Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow IAT Std",
+						"fullPath": [
+							"Flow IAT Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow IAT Max",
+						"fullPath": [
+							"Flow IAT Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Flow IAT Min",
+						"fullPath": [
+							"Flow IAT Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd IAT Tot",
+						"fullPath": [
+							"Fwd IAT Tot"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd IAT Mean",
+						"fullPath": [
+							"Fwd IAT Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd IAT Std",
+						"fullPath": [
+							"Fwd IAT Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd IAT Max",
+						"fullPath": [
+							"Fwd IAT Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd IAT Min",
+						"fullPath": [
+							"Fwd IAT Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd IAT Tot",
+						"fullPath": [
+							"Bwd IAT Tot"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd IAT Mean",
+						"fullPath": [
+							"Bwd IAT Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd IAT Std",
+						"fullPath": [
+							"Bwd IAT Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd IAT Max",
+						"fullPath": [
+							"Bwd IAT Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd IAT Min",
+						"fullPath": [
+							"Bwd IAT Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd PSH Flags",
+						"fullPath": [
+							"Fwd PSH Flags"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd PSH Flags",
+						"fullPath": [
+							"Bwd PSH Flags"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd URG Flags",
+						"fullPath": [
+							"Fwd URG Flags"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd URG Flags",
+						"fullPath": [
+							"Bwd URG Flags"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Header Len",
+						"fullPath": [
+							"Fwd Header Len"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Header Len",
+						"fullPath": [
+							"Bwd Header Len"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Pkts/s",
+						"fullPath": [
+							"Fwd Pkts/s"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Pkts/s",
+						"fullPath": [
+							"Bwd Pkts/s"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt Len Min",
+						"fullPath": [
+							"Pkt Len Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt Len Max",
+						"fullPath": [
+							"Pkt Len Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt Len Mean",
+						"fullPath": [
+							"Pkt Len Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt Len Std",
+						"fullPath": [
+							"Pkt Len Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt Len Var",
+						"fullPath": [
+							"Pkt Len Var"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "FIN Flag Cnt",
+						"fullPath": [
+							"FIN Flag Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "SYN Flag Cnt",
+						"fullPath": [
+							"SYN Flag Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "RST Flag Cnt",
+						"fullPath": [
+							"RST Flag Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "PSH Flag Cnt",
+						"fullPath": [
+							"PSH Flag Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "ACK Flag Cnt",
+						"fullPath": [
+							"ACK Flag Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "URG Flag Cnt",
+						"fullPath": [
+							"URG Flag Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "CWE Flag Count",
+						"fullPath": [
+							"CWE Flag Count"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "ECE Flag Cnt",
+						"fullPath": [
+							"ECE Flag Cnt"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Down/Up Ratio",
+						"fullPath": [
+							"Down/Up Ratio"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Pkt Size Avg",
+						"fullPath": [
+							"Pkt Size Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Seg Size Avg",
+						"fullPath": [
+							"Fwd Seg Size Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Seg Size Avg",
+						"fullPath": [
+							"Bwd Seg Size Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Byts/b Avg",
+						"fullPath": [
+							"Fwd Byts/b Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Pkts/b Avg",
+						"fullPath": [
+							"Fwd Pkts/b Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Blk Rate Avg",
+						"fullPath": [
+							"Fwd Blk Rate Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Byts/b Avg",
+						"fullPath": [
+							"Bwd Byts/b Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Pkts/b Avg",
+						"fullPath": [
+							"Bwd Pkts/b Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Bwd Blk Rate Avg",
+						"fullPath": [
+							"Bwd Blk Rate Avg"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Subflow Fwd Pkts",
+						"fullPath": [
+							"Subflow Fwd Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Subflow Fwd Byts",
+						"fullPath": [
+							"Subflow Fwd Byts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Subflow Bwd Pkts",
+						"fullPath": [
+							"Subflow Bwd Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Subflow Bwd Byts",
+						"fullPath": [
+							"Subflow Bwd Byts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Init Fwd Win Byts",
+						"fullPath": [
+							"Init Fwd Win Byts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Init Bwd Win Byts",
+						"fullPath": [
+							"Init Bwd Win Byts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Act Data Pkts",
+						"fullPath": [
+							"Fwd Act Data Pkts"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Fwd Seg Size Min",
+						"fullPath": [
+							"Fwd Seg Size Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Active Mean",
+						"fullPath": [
+							"Active Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Active Std",
+						"fullPath": [
+							"Active Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Active Max",
+						"fullPath": [
+							"Active Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Active Min",
+						"fullPath": [
+							"Active Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Idle Mean",
+						"fullPath": [
+							"Idle Mean"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Idle Std",
+						"fullPath": [
+							"Idle Std"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Idle Max",
+						"fullPath": [
+							"Idle Max"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Idle Min",
+						"fullPath": [
+							"Idle Min"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					},
+					{
+						"key": "Label",
+						"fullPath": [
+							"Label"
+						],
+						"type": "string",
+						"glueStudioType": null,
+						"children": null
+					}
+				]
+			],
+			"calculatedType": "",
+			"codeGenVersion": 2
+		},
+		"node-3": {
+			"nodeId": "node-3",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [
+				"node-1"
+			],
+			"name": "S3 bucket",
+			"generatedNodeName": "S3bucket_node3",
+			"classification": "DataSink",
+			"type": "S3",
+			"streamingBatchInterval": 100,
+			"format": "csv",
+			"compression": "none",
+			"path": "s3://projeto-integrador-grupo-b-raw",
+			"partitionKeys": [],
+			"schemaChangePolicy": {
+				"enableUpdateCatalog": false,
+				"updateBehavior": null,
+				"database": null,
+				"table": null
+			},
+			"updateCatalogOptions": "none",
+			"calculatedType": ""
+		}
+	},
+	"hasBeenSaved": false
+}

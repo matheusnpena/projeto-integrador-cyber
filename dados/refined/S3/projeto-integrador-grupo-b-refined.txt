@@ -1,0 +1,6 @@
+Configurações do Bucket S3: projeto-integrador-grupo-b-raw
+
+Região da AWS: Leste dos EUA (Norte da Virgínia) us-east-1
+Nome de recurso da Amazon (ARN): arn:aws:s3:::projeto-integrador-grupo-b-refined
+Data de criação: 30 May 2023 07:34:00 PM -03
+Acesso: Bucket e objetos não públicos
