@@ -13,7 +13,7 @@ Base: https://aws.amazon.com/marketplace/pp/prodview-qkyroawpr2aw6?sr=0-60&ref_=
 
 1° Camada Raw:
 
-2° Camada Trusted:s
+2° Camada Trusted:
 
 3° Camada Refined:
 
