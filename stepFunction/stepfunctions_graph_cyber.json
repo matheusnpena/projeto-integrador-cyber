@@ -1,0 +1,30 @@
+{
+    "Comment": "Orquestração das camadas Raw, Trusted e Refined do Projeto Cyber",
+    "StartAt": "Glue StartJobRun: Raw Trusted",
+    "States": {
+      "Glue StartJobRun: Raw Trusted": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::glue:startJobRun.sync",
+        "Parameters": {
+          "JobName": "grupo_b_job_camada_raw_trusted"
+        },
+        "Next": "Glue StartJobRun: Trusted Refined"
+      },
+      "Glue StartJobRun: Trusted Refined": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::glue:startJobRun.sync",
+        "Parameters": {
+          "JobName": "grupo_b_job_camada_trusted_refined"
+        },
+        "Next": "Glue StartJobRun: Treinamento Amostra"
+      },
+      "Glue StartJobRun: Treinamento Amostra": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::glue:startJobRun.sync",
+        "Parameters": {
+          "JobName": "grupo_b_job_amostra_treinamento"
+        },
+        "End": true
+      }
+    }
+  }
