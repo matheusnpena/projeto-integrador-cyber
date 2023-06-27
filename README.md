@@ -19,9 +19,11 @@ Arquitetura:
 1° Camada Raw:
 
 S3:
+
 ![projeto-integrador-grupo-b-raw](https://github.com/matheusnpena/projeto-integrador-cyber/assets/60858939/42fce20c-8452-43a9-ab2d-69a6307f83d7)
 
 Glue:
+
 ![image](https://github.com/matheusnpena/projeto-integrador-cyber/assets/60858939/de5504cf-ab31-4577-b8b7-07d922bfd756)
 ![image](https://github.com/matheusnpena/projeto-integrador-cyber/assets/60858939/103192a6-ee19-4d01-a1b1-aedc3d0c81e5)
 
@@ -29,17 +31,21 @@ Glue:
 2° Camada Trusted:
 
 S3:
+
 ![projeto-integrador-grupo-b-trusted](https://github.com/matheusnpena/projeto-integrador-cyber/assets/60858939/d2f03d42-9363-47e9-9e7d-0e00abb39202)
 
 Glue:
+
 ![image](https://github.com/matheusnpena/projeto-integrador-cyber/assets/60858939/5e8a631e-4d46-444b-b776-45e6fa50ab6c)
 
 3° Camada Refined:
 
 S3:
+
 ![projeto-integrador-grupo-b-refined](https://github.com/matheusnpena/projeto-integrador-cyber/assets/60858939/740d8122-bb4d-4a13-a285-f044c6cc6130)
 
 Glue:
+
 ![image](https://github.com/matheusnpena/projeto-integrador-cyber/assets/60858939/0d674c30-0799-4009-8609-eaa5dd1cbbaa)
 
 
